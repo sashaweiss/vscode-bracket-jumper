@@ -1,6 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
-import * as commands from './commands';
+import * as commands from './commands_tokens';
 
 export function activate(context: vscode.ExtensionContext) {
 
