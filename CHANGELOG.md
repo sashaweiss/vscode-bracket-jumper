@@ -1,7 +1,6 @@
 # Change Log
-All notable changes to the "better-bracket-jumper" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-- Initial release
+## [0.0.1] - 3/24/2017
+### Added
+- Jump and select text to nearest enclosing right or left bracket
+- Default keybindings

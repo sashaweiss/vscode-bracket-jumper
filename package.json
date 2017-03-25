@@ -1,7 +1,7 @@
 {
     "name": "bracket-jumper",
     "displayName": "bracket-jumper",
-    "description": "More comprehensive bracket-based navigation and selection",
+    "description": "Bracket-based editor navigation and text selection",
     "version": "0.0.1",
     "publisher": "sashaweiss",
     "license": "MIT",
@@ -34,7 +34,28 @@
         {
             "command": "bracket-jumper.selectRight",
             "title": "Select to right bracket"
-        }]
+        }],
+        "keybindings": [{
+                "command": "bracket-jumper.jumpLeft",
+                "key": "ctrl+alt+left",
+                "mac": "ctrl+left"
+            },
+            {
+                "command": "bracket-jumper.jumpRight",
+                "key": "ctrl+alt+right",
+                "mac": "ctrl+right"
+            },
+            {
+                "command": "bracket-jumper.selectLeft",
+                "key": "ctrl+alt+shift+left",
+                "mac": "ctrl+shift+left"
+            },
+            {
+                "command": "bracket-jumper.selectRight",
+                "key": "ctrl+alt+shift+right",
+                "mac": "ctrl+shift+right"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
@@ -50,11 +71,11 @@
         "@types/mocha": "^2.2.32"
     },
     "bugs": {
-        "url": "https://github.com/sashaweiss/better-bracket-jumper/issues"
+        "url": "https://github.com/sashaweiss/bracket-jumper/issues"
     },
-    "homepage": "https://github.com/sashaweiss/better-bracket-jumper/blob/master/README.md",
+    "homepage": "https://github.com/sashaweiss/bracket-jumper/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sashaweiss/better-bracket-jumper"
+        "url": "https://github.com/sashaweiss/bracket-jumper"
     }
 }

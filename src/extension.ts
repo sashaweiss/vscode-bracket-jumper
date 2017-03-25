@@ -4,7 +4,7 @@ import * as brackets from './brackets';
 
 export function activate(context: vscode.ExtensionContext) {
 
-    console.log('better-bracket-jumper activating...registering commands...');
+    console.log('bracket-jumper activating...registering commands...');
 
     let jumpLeft = vscode.commands.registerCommand('bracket-jumper.jumpLeft', () => {
         brackets.jumpLeft()

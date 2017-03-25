@@ -6,9 +6,12 @@ const RIGHT_BRACKET = /[}\]\)]/
 
 function bracketPosRightOfPos(document: vs.TextDocument, pos: vs.Position): vs.Position | null {
     let lineNum: number = pos.line
+    
     let offset = pos.character + 1
     let line: string = document.lineAt(lineNum).text.substring(offset)
-    let bracketInd: number | null = offset + indexOfRegex(line, RIGHT_BRACKET)
+    
+    let ind = indexOfRegex(line, RIGHT_BRACKET)
+    let bracketInd: number | null = ind ? offset + ind : null 
 
     let max = document.lineCount - 1
     while (lineNum < max && !bracketInd) {
