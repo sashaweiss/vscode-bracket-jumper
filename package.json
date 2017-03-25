@@ -2,7 +2,7 @@
     "name": "bracket-jumper",
     "displayName": "Bracket Jumper",
     "description": "Bracket-based editor navigation and text selection",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "sashaweiss",
     "license": "MIT",
     "engines": {
@@ -19,23 +19,26 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "bracket-jumper.jumpLeft",
-            "title": "Jump to left bracket"
-        },
-        {
-            "command": "bracket-jumper.jumpRight",
-            "title": "Jump to right bracket"
-        },
-        {
-            "command": "bracket-jumper.selectLeft",
-            "title": "Select to left bracket"
-        },
-        {
-            "command": "bracket-jumper.selectRight",
-            "title": "Select to right bracket"
-        }],
-        "keybindings": [{
+        "commands": [
+            {
+                "command": "bracket-jumper.jumpLeft",
+                "title": "Jump to left bracket"
+            },
+            {
+                "command": "bracket-jumper.jumpRight",
+                "title": "Jump to right bracket"
+            },
+            {
+                "command": "bracket-jumper.selectLeft",
+                "title": "Select to left bracket"
+            },
+            {
+                "command": "bracket-jumper.selectRight",
+                "title": "Select to right bracket"
+            }
+        ],
+        "keybindings": [
+            {
                 "command": "bracket-jumper.jumpLeft",
                 "key": "ctrl+alt+left",
                 "mac": "ctrl+left"
