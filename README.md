@@ -2,7 +2,7 @@
 Navigate by jumping from bracket to bracket!
 
 ## Features
-Travel in a text editor by jumping/selecting to the outside of the nearest enclosing right or left bracket.
+Travel in a text editor by jumping/selecting to the nearest enclosing right or left bracket, or the match of a currently cursor-ed bracket.
 
 Replaces and extends functionality of VSCode's built-in `editor.action.jumpToBracket`.
 
@@ -16,7 +16,7 @@ bracket-jumper.selectRight: { Mac: ctrl+shift+right, Windows/Linux: ctrl+alt+shi
 
 ## Issues
 
-Please let me know of any bugs via the issues page!
+Please let me know of any bugs or feature requests via the issues page!
 
 ## Release Notes
 See the [CHANGELOG](./CHANGELOG.md)

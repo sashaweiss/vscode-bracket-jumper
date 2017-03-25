@@ -47,12 +47,13 @@ export function bracketPosInDir(document: vs.TextDocument, pos: vs.Position, dir
     let [des, pair] = dir == "left" ? [LEFT, RIGHT] : [RIGHT, LEFT]
     let posFun = dir == "left" ? posLeft : posRight
     
-    let pAdj = pos
+    let pAdj = dir == "left" ? posFun(document, pos) : pos // If going left, skip examining current char
     let paired = Array<number>(LEFT.length).fill(0)
 
     while ((pAdj = posFun(document, pAdj))) {
         let char = charAtPos(document, pAdj)
         
+        // Avoid jumping to internally paired bracket sets
         let pairInd = pair.indexOf(char)
         if (pairInd != -1) { 
             paired[pairInd]++
@@ -65,7 +66,7 @@ export function bracketPosInDir(document: vs.TextDocument, pos: vs.Position, dir
                 paired[desInd]--
             }
             else {
-                return dir == "left" ? pAdj : new vs.Position(pAdj.line, pAdj.character + 1)
+                return dir == "left" ? pAdj : new vs.Position(pAdj.line, pAdj.character + 1) // Put us on the outside always
             }
         }
     }
