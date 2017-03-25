@@ -41,22 +41,26 @@
             {
                 "command": "bracket-jumper.jumpLeft",
                 "key": "ctrl+alt+left",
-                "mac": "ctrl+left"
+                "mac": "ctrl+left",
+                "when": "editorTextFocus"
             },
             {
                 "command": "bracket-jumper.jumpRight",
                 "key": "ctrl+alt+right",
-                "mac": "ctrl+right"
+                "mac": "ctrl+right",
+                "when": "editorTextFocus"
             },
             {
                 "command": "bracket-jumper.selectLeft",
                 "key": "ctrl+alt+shift+left",
-                "mac": "ctrl+shift+left"
+                "mac": "ctrl+shift+left",
+                "when": "editorTextFocus"
             },
             {
                 "command": "bracket-jumper.selectRight",
                 "key": "ctrl+alt+shift+right",
-                "mac": "ctrl+shift+right"
+                "mac": "ctrl+shift+right",
+                "when": "editorTextFocus"
             }
         ]
     },
