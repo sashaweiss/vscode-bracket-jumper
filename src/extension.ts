@@ -1,22 +1,22 @@
 'use strict';
 import * as vscode from 'vscode';
-import * as brackets from './brackets';
+import * as commands from './commands';
 
 export function activate(context: vscode.ExtensionContext) {
 
     console.log('bracket-jumper activating...registering commands...');
 
     let jumpLeft = vscode.commands.registerCommand('bracket-jumper.jumpLeft', () => {
-        brackets.jumpLeft()
+        commands.jumpLeft()
     });
     let jumpRight = vscode.commands.registerCommand('bracket-jumper.jumpRight', () => {
-        brackets.jumpRight()
+        commands.jumpRight()
     })
     let selectLeft = vscode.commands.registerCommand('bracket-jumper.selectLeft', () => {
-        brackets.selectLeft()
+        commands.selectLeft()
     })
     let selectRight = vscode.commands.registerCommand('bracket-jumper.selectRight', () => {
-        brackets.selectRight()
+        commands.selectRight()
     })
 
     console.log('Commands registered.')
