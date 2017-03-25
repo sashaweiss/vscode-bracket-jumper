@@ -11,6 +11,7 @@ export function jumpLeft() {
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
     }
 }
 
@@ -23,6 +24,7 @@ export function jumpRight() {
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
     }
 }
 
@@ -36,6 +38,7 @@ export function selectLeft() {
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
     }
 }
 
@@ -49,5 +52,6 @@ export function selectRight() {
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
     }
 }
