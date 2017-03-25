@@ -7,7 +7,7 @@ export function jumpLeft() {
     let curPos = editor.selection.active
     let document = editor.document
 
-    let bracketPos = brackets.matchingBracketPosOfPos(document, curPos, "left") || brackets.bracketPosLeftOfPos(document, curPos)
+    let bracketPos = brackets.bracketPosInDir(document, curPos, "left")
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
@@ -19,7 +19,7 @@ export function jumpRight() {
     let curPos = editor.selection.active
     let document = editor.document    
 
-    let bracketPos = brackets.matchingBracketPosOfPos(document, curPos, "right") || brackets.bracketPosRightOfPos(document, curPos)
+    let bracketPos = brackets.bracketPosInDir(document, curPos, "right")
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
@@ -32,7 +32,7 @@ export function selectLeft() {
     let anchorPos = editor.selection.anchor
     let document = editor.document
 
-    let bracketPos = brackets.bracketPosLeftOfPos(document, curPos)
+    let bracketPos = brackets.bracketPosInDir(document, curPos, "left")
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection
@@ -45,7 +45,7 @@ export function selectRight() {
     let anchorPos = editor.selection.anchor
     let document = editor.document
 
-    let bracketPos = brackets.bracketPosRightOfPos(document, curPos)
+    let bracketPos = brackets.bracketPosInDir(document, curPos, "right")
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection
