@@ -2,7 +2,7 @@
     "name": "bracket-jumper",
     "displayName": "Bracket Jumper",
     "description": "Bracket-based editor navigation and text selection",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "publisher": "sashaweiss",
     "license": "MIT",
     "engines": {
@@ -57,7 +57,8 @@
                 "title": "Select to the nearest right bracket at the same of higher scope"
             }
         ],
-        "keybindings": [{
+        "keybindings": [
+            {
                 "command": "bracket-jumper.jumpLeft",
                 "key": "ctrl+alt+left",
                 "mac": "ctrl+left",
