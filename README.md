@@ -11,7 +11,7 @@ bracket-jumper.jumpRight:   { Mac: ctrl+right, Windows/Linux: ctrl+alt+right }
 bracket-jumper.selectLeft:  { Mac: ctrl+shift+left, Windows/Linux: ctrl+alt+shift+left }
 bracket-jumper.selectRight: { Mac: ctrl+shift+right, Windows/Linux: ctrl+alt+shift+right }
 ```
-<img src="./simple_jump_demo.gif" width="400">
+<img src="https://github.com/sashaweiss/vscode-bracket-jumper/blob/master/simple_jump_demo.gif" width="400">
 
 The following commands "ascend", by jumping to the nearest or matching scope-delimiting bracket (system specific keybindings are provided).
 ```
@@ -20,7 +20,7 @@ bracket-jumper.ascendRight:       { Mac: ctrl+down, Windows/Linux: ctrl+alt+down
 bracket-jumper.selectAscendLeft:  { Mac: ctrl+shift+up, Windows/Linux: ctrl+alt+shift+up }
 bracket-jumper.selectAscendRight: { Mac: ctrl+shift+down, Windows/Linux: ctrl+alt+shift+down }
 ```
-<img src="./ascend_demo.gif" width="400">
+<img src="https://github.com/sashaweiss/vscode-bracket-jumper/blob/master/ascend_demo.gif" width="400">
 
 By default, the characters `{ } [ ] ( )` are considered "brackets" - this list is configurable in Settings.
 
