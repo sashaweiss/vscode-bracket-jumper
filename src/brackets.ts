@@ -1,8 +1,8 @@
 'use strict';
 import * as vs from 'vscode'
 
-const LEFT = ["{", "(", "["] // Everything in LEFT must have...
-const RIGHT = ["}", ")", "]"] // a closing match in RIGHT.
+let LEFT = vs.workspace.getConfiguration('bracket-jumper').get<string[]>('openingBrackets')
+let RIGHT = vs.workspace.getConfiguration('bracket-jumper').get<string[]>('closingBrackets')
 
 /**
  * Get the character left or right of the given position
@@ -124,4 +124,14 @@ export function bracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left"
         }
     }
     return null
+}
+
+/**
+ * Update the LEFT and RIGHT arrays.
+ */
+export function updateLeftRight() {
+    const config = vs.workspace.getConfiguration('bracket-jumper')
+    
+    LEFT = config.get<string[]>('openingBrackets')
+    RIGHT = config.get<string[]>('closingBrackets')
 }

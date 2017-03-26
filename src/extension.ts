@@ -1,6 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as commands from './commands';
+import { updateLeftRight } from './brackets'
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -30,9 +31,12 @@ export function activate(context: vscode.ExtensionContext) {
     let ascendSelectRight = vscode.commands.registerCommand('bracket-jumper.ascendSelectRight', () => {
         commands.ascendSelectRight()
     })
+    let configListener = vscode.workspace.onDidChangeConfiguration(() => {
+        updateLeftRight()
+    })
 
     console.log('Commands registered.')
-    context.subscriptions.push(jumpLeft, jumpRight, selectLeft, selectRight, ascendLeft, ascendRight, ascendSelectLeft, ascendSelectRight);
+    context.subscriptions.push(jumpLeft, jumpRight, selectLeft, selectRight, ascendLeft, ascendRight, ascendSelectLeft, ascendSelectRight, configListener);
 }
 
 export function deactivate() {

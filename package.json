@@ -106,7 +106,22 @@
                 "mac": "ctrl+shift+down",
                 "when": "editorTextFocus"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Bracket Jumper configuration",
+            "properties": {
+                "bracket-jumper.openingBrackets": {
+                    "type": "array",
+                    "default": ["{", "[", "("],
+                    "description": "Characters to be recognized as opening brackets. MUST have a pair in closingBrackets."
+                },
+                "bracket-jumper.closingBrackets": {
+                    "type": "array",
+                    "default": ["}", "]", ")"],
+                    "description": "Characters to be recognized as closing brackets. MUST have a pair in openingBrackets."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",

@@ -22,7 +22,7 @@ bracket-jumper.selectAscendRight: { Mac: ctrl+shift+down, Windows/Linux: ctrl+al
 ```
 <img src="./ascend_demo.gif" width="400">
 
-Currently recognizes the bracket characters `{, }, [, ], (, )`.
+By default, the characters `{ } [ ] ( )` are considered "brackets" - this list is configurable in Settings.
 
 This extension replaces and extends functionality of VSCode's native `editor.action.jumpToBracket`.
 

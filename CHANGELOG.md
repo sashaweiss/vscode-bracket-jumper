@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.1.0] - 3/26/2017
+### Added
+- Configure what is considered a bracket
+
 ## [1.0.0] - 3/26/2017
 ### Added
 - Simple jumping to nearest bracket
