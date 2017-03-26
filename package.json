@@ -2,7 +2,7 @@
     "name": "bracket-jumper",
     "displayName": "Bracket Jumper",
     "description": "Bracket-based editor navigation and text selection",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "publisher": "sashaweiss",
     "license": "MIT",
     "engines": {
@@ -112,12 +112,20 @@
             "properties": {
                 "bracket-jumper.openingBrackets": {
                     "type": "array",
-                    "default": ["{", "[", "("],
+                    "default": [
+                        "{",
+                        "[",
+                        "("
+                    ],
                     "description": "Characters to be recognized as opening brackets. MUST have a pair in closingBrackets."
                 },
                 "bracket-jumper.closingBrackets": {
                     "type": "array",
-                    "default": ["}", "]", ")"],
+                    "default": [
+                        "}",
+                        "]",
+                        ")"
+                    ],
                     "description": "Characters to be recognized as closing brackets. MUST have a pair in openingBrackets."
                 }
             }
