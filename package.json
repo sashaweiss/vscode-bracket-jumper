@@ -15,7 +15,11 @@
         "onCommand:bracket-jumper.jumpLeft",
         "onCommand:bracket-jumper.jumpRight",
         "onCommand:bracket-jumper.selectLeft",
-        "onCommand:bracket-jumper.selectRight"
+        "onCommand:bracket-jumper.selectRight",
+        "onCommand:bracket-jumper.ascendLeft",
+        "onCommand:bracket-jumper.ascendRight",
+        "onCommand:bracket-jumper.ascendSelectLeft",
+        "onCommand:bracket-jumper.ascendSelectRight"
     ],
     "main": "./out/src/extension",
     "contributes": {

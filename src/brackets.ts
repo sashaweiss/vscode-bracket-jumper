@@ -45,15 +45,27 @@ function posRight(document: vs.TextDocument, pos: vs.Position): vs.Position | nu
  * @param dir the direction to search
  * @returns the bracket position, or null if not found
  */
-export function unmatchedBracketInDir(document: vs.TextDocument, pos: vs.Position, dir: "left" | "right"): vs.Position | null {
+export function unmatchedBracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left" | "right"): vs.Position | null {
     let [des, pair] = dir == "left" ? [LEFT, RIGHT] : [RIGHT, LEFT]
     let posFun = dir == "left" ? posLeft : posRight
     
-    let pAdj = dir == "left" ? posFun(document, pos) : pos // If going left, skip examining current char
+    // Pesky edge case jumping right when current char is a bracket and last char in file
+    if (dir == "right" && RIGHT.indexOf(charAtPos(doc, pos)) != -1) {
+        return new vs.Position(pos.line, pos.character + 1)
+    }
+
+    // Pesky edge case jumping left when prev char is a left bracket, skips it otherwise
+    if (dir == "left" && LEFT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1) {
+        return posLeft(doc, pos)
+    }
+
+    // Skip examining current char if going left, otherwise gets stuck
+    let pAdj = dir == "left" ? posLeft(doc, pos) : pos
+
     let paired = Array<number>(LEFT.length).fill(0)
 
-    while ((pAdj = posFun(document, pAdj))) {
-        let char = charAtPos(document, pAdj)
+    while ((pAdj = posFun(doc, pAdj))) {
+        let char = charAtPos(doc, pAdj)
         
         // Avoid jumping to internally paired bracket sets
         let pairInd = pair.indexOf(char)
@@ -76,51 +88,36 @@ export function unmatchedBracketInDir(document: vs.TextDocument, pos: vs.Positio
 }
 
 /**
- * The position of the nearest enclosing opening bracket, in the given direction.
- * 
- * NOTE: not currently used in any exposed commands.
- * 
- * @param document the document to search
- * @param pos the position to search from
- * @param dir the direction to search
- * @returns the bracket position, or null if not found
- */
-export function openingBracketInDir(document: vs.TextDocument, pos: vs.Position, dir: "left" | "right"): vs.Position | null {
-    let des = dir == "left" ? LEFT : RIGHT
-    let posFun = dir == "left" ? posLeft : posRight
-
-    let pAdj = dir == "left" ? posFun(document, pos) : pos // If going left, skip examining current char
-
-    while ((pAdj = posFun(document, pAdj))) {
-        let char = charAtPos(document, pAdj)
-
-        if (char in des) {
-            return dir == "left" ? pAdj : new vs.Position(pAdj.line, pAdj.character + 1) // Put us on the outside always
-        }
-    }
-    return null
-}
-
-/**
  * The position of the nearest bracket in the given direction.
  * @param document the document to search
  * @param pos the position to search from
  * @param dir the direction to search
  * @returns the bracket position, or null if not found
  */
-export function bracketInDir(document: vs.TextDocument, pos: vs.Position, dir: "left" | "right"): vs.Position | null {
+export function bracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left" | "right"): vs.Position | null {
     let posFun = dir == "left" ? posLeft : posRight
 
-    let pAdj = dir == "left" ? posFun(document, pos) : pos // If going left, skip examining current char
+    // Pesky edge case jumping right when current char is a bracket and last char in file
+    if (dir == "right" && RIGHT.indexOf(charAtPos(doc, pos)) != -1) {
+        return new vs.Position(pos.line, pos.character + 1)
+    }
 
-    while ((pAdj = posFun(document, pAdj))) {
-        let char = charAtPos(document, pAdj)
+    // Pesky edge case jumping left when prev char is a left bracket, skips it otherwise
+    if (dir == "left" && LEFT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1) {
+        return posLeft(doc, pos)
+    }
+
+    // Skip examining current char if going left, otherwise gets stuck
+    let pAdj = dir == "left" ? posLeft(doc, pos) : pos
+
+    while ((pAdj = posFun(doc, pAdj))) {
+        let char = charAtPos(doc, pAdj)
 
         if (LEFT.indexOf(char) != -1) {
              return pAdj
         }
         else if (RIGHT.indexOf(char) != -1) {
-            return new vs.Position(pAdj.line, pAdj.character + 1) 
+            return new vs.Position(pAdj.line, pAdj.character + 1)
         }
     }
     return null
