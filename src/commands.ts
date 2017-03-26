@@ -7,7 +7,7 @@ export function jumpLeft() {
     let curPos = editor.selection.active
     let document = editor.document
 
-    let bracketPos = brackets.bracketPosInDir(document, curPos, "left")
+    let bracketPos = brackets.bracketInDir(document, curPos, "left")
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
@@ -18,9 +18,9 @@ export function jumpLeft() {
 export function jumpRight() {
     let editor = vs.window.activeTextEditor;
     let curPos = editor.selection.active
-    let document = editor.document    
+    let document = editor.document
 
-    let bracketPos = brackets.bracketPosInDir(document, curPos, "right")
+    let bracketPos = brackets.bracketInDir(document, curPos, "right")
     if (bracketPos) {
         let newSelection = new vs.Selection(bracketPos, bracketPos)
         editor.selection = newSelection
@@ -30,11 +30,11 @@ export function jumpRight() {
 
 export function selectLeft() {
     let editor = vs.window.activeTextEditor;
-    let curPos = editor.selection.active
+    let curPos = editor.selection.active  
     let anchorPos = editor.selection.anchor
     let document = editor.document
 
-    let bracketPos = brackets.bracketPosInDir(document, curPos, "left")
+    let bracketPos = brackets.bracketInDir(document, curPos, "left")
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection
@@ -48,7 +48,61 @@ export function selectRight() {
     let anchorPos = editor.selection.anchor
     let document = editor.document
 
-    let bracketPos = brackets.bracketPosInDir(document, curPos, "right")
+    let bracketPos = brackets.bracketInDir(document, curPos, "right")
+    if (bracketPos) {
+        let newSelection = new vs.Selection(anchorPos, bracketPos)
+        editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
+    }
+}
+
+export function ascendLeft() {
+    let editor = vs.window.activeTextEditor;
+    let curPos = editor.selection.active
+    let document = editor.document
+
+    let bracketPos = brackets.unmatchedBracketInDir(document, curPos, "left")
+    if (bracketPos) {
+        let newSelection = new vs.Selection(bracketPos, bracketPos)
+        editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
+    }
+}
+
+export function ascendRight() {
+    let editor = vs.window.activeTextEditor;
+    let curPos = editor.selection.active
+    let document = editor.document
+
+    let bracketPos = brackets.unmatchedBracketInDir(document, curPos, "right")
+    if (bracketPos) {
+        let newSelection = new vs.Selection(bracketPos, bracketPos)
+        editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
+    }
+}
+
+export function ascendSelectLeft() {
+    let editor = vs.window.activeTextEditor;
+    let curPos = editor.selection.active  
+    let anchorPos = editor.selection.anchor
+    let document = editor.document
+
+    let bracketPos = brackets.unmatchedBracketInDir(document, curPos, "left")
+    if (bracketPos) {
+        let newSelection = new vs.Selection(anchorPos, bracketPos)
+        editor.selection = newSelection
+        editor.revealRange(new vs.Range(bracketPos, bracketPos))
+    }
+}
+
+export function ascendSelectRight() {
+    let editor = vs.window.activeTextEditor;
+    let curPos = editor.selection.active  
+    let anchorPos = editor.selection.anchor
+    let document = editor.document
+
+    let bracketPos = brackets.unmatchedBracketInDir(document, curPos, "right")
     if (bracketPos) {
         let newSelection = new vs.Selection(anchorPos, bracketPos)
         editor.selection = newSelection

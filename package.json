@@ -22,23 +22,38 @@
         "commands": [
             {
                 "command": "bracket-jumper.jumpLeft",
-                "title": "Jump to left bracket"
+                "title": "Jump to next-left bracket"
             },
             {
                 "command": "bracket-jumper.jumpRight",
-                "title": "Jump to right bracket"
+                "title": "Jump to next-right bracket"
             },
             {
                 "command": "bracket-jumper.selectLeft",
-                "title": "Select to left bracket"
+                "title": "Select to next-left bracket"
             },
             {
                 "command": "bracket-jumper.selectRight",
-                "title": "Select to right bracket"
+                "title": "Select to next-right bracket"
+            },
+            {
+                "command": "bracket-jumper.ascendLeft",
+                "title": "Jump to nearest left bracket at same or higher scope"
+            },
+            {
+                "command": "bracket-jumper.selectAscendLeft",
+                "title": "Select to the nearest left bracket at the same or higher scope"
+            },
+            {
+                "command": "bracket-jumper.ascendRight",
+                "title": "Jump to the nearest right bracket at the same or higher scope"
+            },
+            {
+                "command": "bracket-jumper.selectAscendRight",
+                "title": "Select to the nearest right bracket at the same of higher scope"
             }
         ],
-        "keybindings": [
-            {
+        "keybindings": [{
                 "command": "bracket-jumper.jumpLeft",
                 "key": "ctrl+alt+left",
                 "mac": "ctrl+left",
@@ -60,6 +75,30 @@
                 "command": "bracket-jumper.selectRight",
                 "key": "ctrl+alt+shift+right",
                 "mac": "ctrl+shift+right",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "bracket-jumper.ascendLeft",
+                "key": "ctrl+alt+up",
+                "mac": "ctrl+up",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "bracket-jumper.selectAscendLeft",
+                "key": "ctrl+alt+shift+up",
+                "mac": "ctrl+shift+up",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "bracket-jumper.ascendRight",
+                "key": "ctrl+alt+down",
+                "mac": "ctrl+down",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "bracket-jumper.selectAscendRight",
+                "key": "ctrl+alt+shift+down",
+                "mac": "ctrl+shift+down",
                 "when": "editorTextFocus"
             }
         ]
