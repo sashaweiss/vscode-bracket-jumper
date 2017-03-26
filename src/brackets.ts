@@ -20,7 +20,7 @@ function charAtPos(document: vs.TextDocument, pos: vs.Position): string {
  * The position one step left in the document
  * @param document the document to move in
  * @param pos the position to move from
- * @returns the position one step left, or null if first
+ * @returns the position one step left, or null if last
  */
 function posLeft(document: vs.TextDocument, pos: vs.Position): vs.Position | null {
     let offset = document.offsetAt(pos)
@@ -35,7 +35,10 @@ function posLeft(document: vs.TextDocument, pos: vs.Position): vs.Position | nul
  */
 function posRight(document: vs.TextDocument, pos: vs.Position): vs.Position | null {
     let offset = document.offsetAt(pos)
-    return offset < document.getText().length - 1 ? document.positionAt(offset + 1) : null
+    let next = offset < document.getText().length ? document.positionAt(offset + 1) : null
+
+    // If next same as pos, shift by two. See: https://github.com/Microsoft/vscode/issues/23247
+    return next && pos.isEqual(next) ? document.positionAt(offset + 2) : next
 }
 
 /**
