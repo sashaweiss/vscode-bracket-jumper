@@ -4,7 +4,7 @@ Navigate by jumping from bracket to bracket!
 ## Features
 Travel in an editor by bracket! Simply jump to the **nearest bracket left or right**, or "ascend" by jumping to the bracket enclosing the **nearest or matching level of scope**.
 
-The following included commands jump simply to the nearest left or right bracket (system-specific keybindings are provided). See the demo below.
+The following included commands jump simply to the nearest left or right bracket (system-specific keybindings are provided).
 ```
 bracket-jumper.jumpLeft:    { Mac: ctrl+left, Windows/Linux: ctrl+alt+left }
 bracket-jumper.jumpRight:   { Mac: ctrl+right, Windows/Linux: ctrl+alt+right }
