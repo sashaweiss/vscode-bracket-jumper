@@ -150,6 +150,6 @@
     "homepage": "https://github.com/sashaweiss/bracket-jumper/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sashaweiss/bracket-jumper"
+        "url": "https://github.com/sashaweiss/vscode-bracket-jumper"
     }
 }
