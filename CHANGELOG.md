@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.1.3] - 3/27/2017
+### Changed
+- README
+
 ## [1.1.0] - 3/26/2017
 ### Added
 - Configure what is considered a bracket
