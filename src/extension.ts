@@ -25,10 +25,10 @@ export function activate(context: vscode.ExtensionContext) {
     let ascendRight = vscode.commands.registerCommand('bracket-jumper.ascendRight', () => {
         commands.ascendRight()
     })
-    let ascendSelectLeft = vscode.commands.registerCommand('bracket-jumper.ascendSelectLeft', () => {
+    let ascendSelectLeft = vscode.commands.registerCommand('bracket-jumper.selectAscendLeft', () => {
         commands.ascendSelectLeft()
     })
-    let ascendSelectRight = vscode.commands.registerCommand('bracket-jumper.ascendSelectRight', () => {
+    let ascendSelectRight = vscode.commands.registerCommand('bracket-jumper.selectAscendRight', () => {
         commands.ascendSelectRight()
     })
     let configListener = vscode.workspace.onDidChangeConfiguration(() => {
