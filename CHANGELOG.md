@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.1.4] - 4/8/2017
+## [1.1.5] - 4/8/2017
 ### Fixed
 - selectAscend commands were not registering, mistyped
 

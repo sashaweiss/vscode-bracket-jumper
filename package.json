@@ -2,7 +2,7 @@
     "name": "bracket-jumper",
     "displayName": "Bracket Jumper",
     "description": "Bracket-based editor navigation and text selection",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "publisher": "sashaweiss",
     "license": "MIT",
     "engines": {
@@ -18,8 +18,8 @@
         "onCommand:bracket-jumper.selectRight",
         "onCommand:bracket-jumper.ascendLeft",
         "onCommand:bracket-jumper.ascendRight",
-        "onCommand:bracket-jumper.ascendSelectLeft",
-        "onCommand:bracket-jumper.ascendSelectRight"
+        "onCommand:bracket-jumper.selectAscendLeft",
+        "onCommand:bracket-jumper.selectAscendRight"
     ],
     "main": "./out/src/extension",
     "contributes": {
