@@ -2,7 +2,7 @@
     "name": "bracket-jumper",
     "displayName": "Bracket Jumper",
     "description": "Bracket-based editor navigation and text selection",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "publisher": "sashaweiss",
     "license": "MIT",
     "engines": {
