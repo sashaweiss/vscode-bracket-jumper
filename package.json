@@ -145,9 +145,9 @@
         "@types/mocha": "^2.2.32"
     },
     "bugs": {
-        "url": "https://github.com/sashaweiss/bracket-jumper/issues"
+        "url": "https://github.com/sashaweiss/vscode-bracket-jumper/issues"
     },
-    "homepage": "https://github.com/sashaweiss/bracket-jumper/blob/master/README.md",
+    "homepage": "https://github.com/sashaweiss/vscode-bracket-jumper/blob/master/README.md",
     "repository": {
         "type": "git",
         "url": "https://github.com/sashaweiss/vscode-bracket-jumper"
