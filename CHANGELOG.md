@@ -1,4 +1,5 @@
-# Change Log
+## [1.1.6] - 8/29/2017
+- Fix bug with crashing command when jumping left from first position in a file
 
 ## [1.1.5] - 4/8/2017
 ### Fixed
