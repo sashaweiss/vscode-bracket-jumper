@@ -1,3 +1,6 @@
+## [1.1.7] - 8/29/2017
+- Update CHANGELOG
+
 ## [1.1.6] - 8/29/2017
 - Fix bug with crashing command when jumping left from first position in a file
 
