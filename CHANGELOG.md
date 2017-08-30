@@ -1,3 +1,6 @@
+## [1.1.8] - 8/30/2017
+- Fix homepage and issues link
+
 ## [1.1.7] - 8/29/2017
 - Update CHANGELOG
 
