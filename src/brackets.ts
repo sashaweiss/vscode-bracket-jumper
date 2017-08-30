@@ -57,6 +57,9 @@ export function unmatchedBracketInDir(doc: vs.TextDocument, pos: vs.Position, di
         return new vs.Position(pos.line, pos.character + 1)
     }
 
+    // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
+    if (posLeft(doc, pos) == null) { return null; }    
+
     // Pesky edge case jumping left when prev char is a left bracket, skips it otherwise
     if (dir == "left" && LEFT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1) {
         return posLeft(doc, pos)
@@ -104,6 +107,9 @@ export function bracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left"
     if (dir == "right" && RIGHT.indexOf(charAtPos(doc, pos)) != -1) {
         return new vs.Position(pos.line, pos.character + 1)
     }
+
+    // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
+    if (posLeft(doc, pos) == null) { return null; }
 
     // Pesky edge case jumping left when prev char is a left bracket, skips it otherwise
     if (dir == "left" && LEFT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1) {
