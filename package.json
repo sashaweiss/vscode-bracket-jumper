@@ -128,6 +128,12 @@
                     ],
                     "description": "Characters to be recognized as closing brackets. MUST have a pair in openingBrackets."
                 }
+                ,
+                "bracket-jumper.landInside": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, the cursor will land inside the bracket instead of outside of it"
+                }
             }
         }
     },
