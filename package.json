@@ -117,7 +117,7 @@
                         "[",
                         "("
                     ],
-                    "description": "Characters to be recognized as opening brackets. MUST have a pair in closingBrackets."
+                    "description": "Characters to be recognized as opening brackets. MUST have a pair in closingBrackets at the same position."
                 },
                 "bracket-jumper.closingBrackets": {
                     "type": "array",
@@ -126,7 +126,7 @@
                         "]",
                         ")"
                     ],
-                    "description": "Characters to be recognized as closing brackets. MUST have a pair in openingBrackets."
+                    "description": "Characters to be recognized as closing brackets. MUST have a pair in openingBrackets at the same position."
                 }
                 ,
                 "bracket-jumper.landInside": {

@@ -14,7 +14,7 @@ let LAND_INSIDE = vs.workspace.getConfiguration('bracket-jumper').get<boolean>('
 function charAtPos(document: vs.TextDocument, pos: vs.Position): string {
     let line = document.lineAt(pos).text
     let ind = pos.character
-    return line.substr(ind, 1)
+    return line.charAt(ind)
 }
 
 /**
@@ -57,21 +57,24 @@ export function unmatchedBracketInDir(doc: vs.TextDocument, pos: vs.Position, di
     // when current char is a right bracket while landing outside
     // when current char is a left bracket while landing inside
     // skips it otherwise (if there are more brackets, if not it won't move)
-    if (dir == "right" && (RIGHT.indexOf(charAtPos(doc, pos)) != -1 && !LAND_INSIDE || LEFT.indexOf(charAtPos(doc, pos)) != -1 && LAND_INSIDE)) {
-        return new vs.Position(pos.line, pos.character + 1)
+    if (dir == "right") {
+        const currChar = charAtPos(doc, pos);
+        if ((RIGHT.includes(currChar) && !LAND_INSIDE) || (LEFT.includes(currChar) && LAND_INSIDE)) {
+            return new vs.Position(pos.line, pos.character + 1)
+        }
     }
-
-    // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
-    if (posLeft(doc, pos) == null) { return null; }    
 
     // Pesky edge case jumping left
     // when prev char is a left bracket while landing outside
     // when prev char is a right bracket while landing inside
     // skips it otherwise (if there are more brackets, if not it won't move)
-    const prev = posLeft(doc, pos)
-    if (dir == "left" && prev !== null) {
-        const ch = charAtPos(doc, prev)
-        if ((LEFT.indexOf(ch) != -1 && !LAND_INSIDE) || (RIGHT.indexOf(ch) != -1 && LAND_INSIDE)) {
+    if (dir == "left") {
+        // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
+        if (posLeft(doc, pos) == null) { return null; }   
+        
+        const prev = posLeft(doc, pos)
+        const prevChar = charAtPos(doc, prev)
+        if ((LEFT.includes(prevChar) && !LAND_INSIDE) || (RIGHT.includes(prevChar) && LAND_INSIDE)) {
             return prev
         }
     }
@@ -123,19 +126,27 @@ export function bracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left"
     // when current char is a right bracket while landing outside
     // when current char is a left bracket while landing inside
     // skips it otherwise (if there are more brackets, if not it won't move)
-    if (dir == "right" && (RIGHT.indexOf(charAtPos(doc, pos)) != -1 && !LAND_INSIDE || LEFT.indexOf(charAtPos(doc, pos)) != -1 && LAND_INSIDE)) {
-        return new vs.Position(pos.line, pos.character + 1)
-    }
 
-    // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
-    if (posLeft(doc, pos) == null) { return null; }
+    if (dir == "right") {
+        const currChar = charAtPos(doc, pos);
+        if ((RIGHT.includes(currChar) && !LAND_INSIDE) || (LEFT.includes(currChar) && LAND_INSIDE)) {
+            return new vs.Position(pos.line, pos.character + 1)
+        }
+    }
 
     // Pesky edge case jumping left
     // when prev char is a left bracket while landing outside
-    // when prec char is a right bracket while landing inside
+    // when prev char is a right bracket while landing inside
     // skips it otherwise (if there are more brackets, if not it won't move)
-    if (dir == "left" && (LEFT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1 && !LAND_INSIDE || RIGHT.indexOf(charAtPos(doc, posLeft(doc, pos))) != -1 && LAND_INSIDE)) {
-        return posLeft(doc, pos)
+    if (dir == "left") {
+        // Hotfix for https://github.com/sashaweiss/vscode-bracket-jumper/issues/1
+        if (posLeft(doc, pos) == null) { return null; }
+        
+        const prev = posLeft(doc, pos)
+        const prevChar = charAtPos(doc, prev)
+        if ((LEFT.includes(prevChar) && !LAND_INSIDE) || (RIGHT.includes(prevChar) && LAND_INSIDE)) {
+            return prev
+        }
     }
 
     // Skip examining current char if going left, otherwise gets stuck (at right bracket if landing outside and at left bracket if landing inside)
@@ -144,10 +155,10 @@ export function bracketInDir(doc: vs.TextDocument, pos: vs.Position, dir: "left"
     while ((pAdj = posFun(doc, pAdj))) {
         let char = charAtPos(doc, pAdj)
 
-        if (LEFT.indexOf(char) != -1) {
+        if (LEFT.includes(char)) {
              return LAND_INSIDE ? new vs.Position(pAdj.line, pAdj.character + 1) : pAdj
         }
-        else if (RIGHT.indexOf(char) != -1) {
+        else if (RIGHT.includes(char)) {
             return LAND_INSIDE ? pAdj : new vs.Position(pAdj.line, pAdj.character + 1)
         }
     }
