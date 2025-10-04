@@ -141,7 +141,7 @@
         "vscode:prepublish": "npm run build",
         "build": "tsc -p ./",
         "watch": "tsc -w -p ./",
-        "test": "node ./node_modules/@vscode/test-electron/lib/runTests.js"
+        "test": "node ./test/runTest.js"
     },
     "devDependencies": {
         "typescript": "^4.9.5",
