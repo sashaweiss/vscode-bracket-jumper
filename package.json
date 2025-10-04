@@ -139,6 +139,7 @@
     },
     "scripts": {
         "vscode:prepublish": "npm run build",
+        "compile": "npm run watch",
         "build": "tsc -p ./",
         "watch": "tsc -w -p ./",
         "test": "node ./test/runTest.js"
